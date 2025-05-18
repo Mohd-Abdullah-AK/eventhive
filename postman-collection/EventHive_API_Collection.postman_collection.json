@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "150fac29-5d4e-4341-a83d-434426e67c55",
 		"name": "EventHive API Collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "14132335"
 	},
 	"item": [
@@ -32,16 +32,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"secret123\",\n  \"role\": \"attendee\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/api/register",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api",
-						"register"
-					]
-				}
+				"url": "{{base_url}}/api/register"
 			},
 			"response": []
 		},
@@ -71,16 +62,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"secret123\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/api/login",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api",
-						"login"
-					]
-				}
+				"url": "{{base_url}}/api/login"
 			},
 			"response": []
 		},
@@ -98,16 +80,7 @@
 						"value": "Bearer {{auth_token}}"
 					}
 				],
-				"url": {
-					"raw": "{{base_url}}/api/events",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api",
-						"events"
-					]
-				}
+				"url": "{{base_url}}/api/events"
 			},
 			"response": []
 		},
@@ -125,14 +98,72 @@
 						"value": "Bearer {{auth_token}}"
 					}
 				],
+				"url": "{{base_url}}/api/bookings"
+			},
+			"response": []
+		},
+		{
+			"name": "List Events (All roles)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": "{{base_url}}/api/events"
+			},
+			"response": []
+		},
+		{
+			"name": "List Events with Filters",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
 				"url": {
-					"raw": "{{base_url}}/api/bookings",
+					"raw": "{{base_url}}/api/events?city=San Francisco&country=USA&title=tech&per_page=5&page=1",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
-						"bookings"
+						"events"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "San Francisco"
+						},
+						{
+							"key": "country",
+							"value": "USA"
+						},
+						{
+							"key": "title",
+							"value": "tech"
+						},
+						{
+							"key": "per_page",
+							"value": "5"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -160,16 +191,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"title\": \"Demo Event\",\n  \"description\": \"An API-generated event\",\n  \"address\": \"123 Test St\",\n  \"city\": \"Testville\",\n  \"country\": \"Testland\",\n  \"start_time\": \"2025-06-01T10:00:00\",\n  \"end_time\": \"2025-06-01T12:00:00\",\n  \"capacity\": 100\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/api/events",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api",
-						"events"
-					]
-				}
+				"url": "{{base_url}}/api/events"
 			},
 			"response": []
 		},
@@ -195,17 +217,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"title\": \"Updated Event Title\"\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/api/events/1",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api",
-						"events",
-						"1"
-					]
-				}
+				"url": "{{base_url}}/api/events/1"
 			},
 			"response": []
 		},
@@ -223,17 +235,7 @@
 						"value": "Bearer {{auth_token}}"
 					}
 				],
-				"url": {
-					"raw": "{{base_url}}/api/events/1",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api",
-						"events",
-						"1"
-					]
-				}
+				"url": "{{base_url}}/api/events/1"
 			},
 			"response": []
 		},
@@ -259,16 +261,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"event_id\": 1\n}"
 				},
-				"url": {
-					"raw": "{{base_url}}/api/bookings",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api",
-						"bookings"
-					]
-				}
+				"url": "{{base_url}}/api/bookings"
 			},
 			"response": []
 		}
